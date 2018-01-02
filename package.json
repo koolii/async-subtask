@@ -1,0 +1,32 @@
+{
+  "name": "async-subtask",
+  "version": "1.0.0",
+  "description": "exec async function into child_process using child_process.fork()",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/koolii/async-subtask.git"
+  },
+  "keywords": [
+    "child_proces",
+    "fork",
+    "async",
+    "promise"
+  ],
+  "author": "koolii",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/koolii/async-subtask/issues"
+  },
+  "homepage": "https://github.com/koolii/async-subtask#readme",
+  "dependencies": {
+    "child_process": "^1.0.2"
+  },
+  "devDependencies": {
+    "jest": "^22.0.4",
+    "mocha": "^4.1.0"
+  }
+}
