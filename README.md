@@ -4,10 +4,10 @@ This module offers interface which execs async function(and promise) in child_pr
 ## environment
 Node.js(x < 8.3.9)
 
-## model
+## model-case
 
 ```javascript
-const fetch = require('node-fetch)
+const fetch = require('node-fetch')
 const fork = require('async-subtask')
 
 const expression = async (url) => {
