@@ -19,7 +19,6 @@ process.on('message', (arg) => {
       })
     }
 
-    /* eslint-disable no-useless-call */
     return k === 'expression' ? Function.call(null, `return ${v}`)() : v
   })
 

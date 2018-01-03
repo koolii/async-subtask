@@ -11,7 +11,7 @@ const fetch = require('node-fetch')
 const fork = require('async-subtask')
 
 const expression = async (url) => {
-  const response = fetch(url)
+  const response = await fetch(url)
   const text = await response.json()
   return text
 }
