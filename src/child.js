@@ -22,9 +22,14 @@ process.on('message', (arg) => {
     return k === 'expression' ? Function.call(null, `return ${v}`)() : v
   })
 
+  console.log(`[child] process.pid: ${process.pid}`)
+
   Promise.resolve()
     .then(() => expression(...argument))
     .then((result) => {
       process.send({ result })
+    })
+    .catch((err) => {
+      console.log(`err: ${err}, ${JSON.stringify(err)}`)
     })
 })
