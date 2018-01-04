@@ -1,1 +1,1 @@
-require('./src/fork')
+module.exports = require('./src/fork')

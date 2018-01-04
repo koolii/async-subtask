@@ -5,25 +5,27 @@ const replacer = (k, v) => (typeof v === 'function' ? v.toString() : v)
 const fork = argument => (
   new Promise((resolve, reject) => {
     try {
-      const child = childProcess.fork('./child_process', [], {
+      const child = childProcess.fork('./child', [], {
         cwd: path.resolve(__dirname),
         // stdio: 'inherit',
         // silent: true,
-        env: {},
+        env: process.env,
       })
 
       if (!child.connected) {
         reject(new Error('Not Connected to child process'))
       }
 
-      child.on('message', (result) => {
+      child.on('message', (response) => {
         if (child.connected) {
           child.disconnect()
         }
 
-        if (Object.keys(result.result) !== 0) {
-          resolve(result)
+        if (Object.keys(response.result) !== 0) {
+          resolve(response)
         }
+
+        reject(response)
       })
 
       child.on('disconnect', () => {
