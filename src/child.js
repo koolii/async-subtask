@@ -9,13 +9,19 @@ process.on('unhandledException', (err) => {
 // VMモジュールを使ってglobal変数を動的に生成できないか？ただし、
 // ここはchild_processということは考えなければならない
 // const dependencies = []
+const delimiter = ':'
 
 process.on('message', (arg) => {
   const { expression, argument } = JSON.parse(arg, (k, v) => {
     if (k === 'dependencies') {
       Object.values(v).forEach((d) => {
         // dependencies[d] = require(d)
-        global[d] = require(d)
+        if (d.includes(delimiter)) {
+          const arr = d.split(delimiter)
+          global[arr[1]] = require(arr[0])
+        } else {
+          global[d] = require(d)
+        }
       })
     }
 

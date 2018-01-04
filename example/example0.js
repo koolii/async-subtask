@@ -1,15 +1,5 @@
-# [WIP] async-subtask
-This module offers interface which execs async function(and promise) in child_process which Node.js has already.
-
-## environment
-Node.js(x < 8.3.9)
-
-## model-case
-
-```javascript
-// example/example0.js
 const fetch = require('node-fetch')
-const fork = require('async-subtask')
+const fork = require('../')
 
 const expression = async (url) => {
   const response = await fetch(url)
@@ -17,15 +7,15 @@ const expression = async (url) => {
   return text
 }
 
+const url = 'https://qiita.com/koolii/items/1823a977c0a2878051e2.json'
 const main = async () => {
   const responseText = await fork({
     expression,
-    argument: ['http://example.com/'],
+    argument: [url],
     dependencies: ['node-fetch:fetch'],
   })
-
   console.log(responseText)
 }
 
 main()
-```
+
